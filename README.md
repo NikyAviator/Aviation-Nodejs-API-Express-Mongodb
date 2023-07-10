@@ -12,5 +12,7 @@ npm install
 start script, cd into backend/ and type:
 
 ```
-npm start
+npm run dev
 ```
+
+(npm start (for production))
