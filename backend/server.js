@@ -8,8 +8,8 @@ dotenv.config({ path: './config/config.env' });
 
 const app = express();
 const PORT = process.env.PORT || 5000;
-
-app.use('/api/v1/', v1BootcampRouter);
+// Mounting routers
+app.use('/api/v1/bootcamps', v1BootcampRouter);
 
 app.listen(
   PORT,
