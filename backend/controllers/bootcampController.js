@@ -1,4 +1,4 @@
-const getAllBootcamps = (req, res) => {
+const getAllBootcamps = (req, res, next) => {
   try {
     res.send({ status: 'OK', msg: 'Show all bootcamps. ppc' });
   } catch (error) {
@@ -7,7 +7,7 @@ const getAllBootcamps = (req, res) => {
       .send({ status: 'FAILED', data: { error: error?.message || error } });
   }
 };
-const getOneBootcamp = (req, res) => {
+const getOneBootcamp = (req, res, next) => {
   try {
     res.send({ status: 'OK', msg: `Display bootcamp ${req.params.id}` });
   } catch (error) {
@@ -17,7 +17,7 @@ const getOneBootcamp = (req, res) => {
   }
 };
 
-const createOneBootcamp = (req, res) => {
+const createOneBootcamp = (req, res, next) => {
   try {
     res.send({ status: 'OK', msg: 'Create a new bootcamp. ppc' });
   } catch (error) {
@@ -27,7 +27,7 @@ const createOneBootcamp = (req, res) => {
   }
 };
 
-const updateOneBootcamp = (req, res) => {
+const updateOneBootcamp = (req, res, next) => {
   try {
     res.send({ status: 'OK', msg: 'Updated a bootcamp.' });
   } catch (error) {
@@ -37,7 +37,7 @@ const updateOneBootcamp = (req, res) => {
   }
 };
 
-const deleteABootcamp = (req, res) => {
+const deleteABootcamp = (req, res, next) => {
   try {
     res.send({ status: 'OK', msg: `Delete a bootcamp: ${req.params.id}` });
   } catch (error) {
