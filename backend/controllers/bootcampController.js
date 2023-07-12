@@ -2,7 +2,9 @@
 //@route    GET /api/v1/bootcamps
 //@access   Public
 const getAllBootcamps = (req, res, next) => {
-  res.status(200).json({ status: 'OK', msg: 'Display all bootcamps' });
+  res
+    .status(200)
+    .json({ status: 'OK', msg: 'Display all bootcamps', hello: req.hello });
 };
 
 //@desc     Get ONE bootcamp

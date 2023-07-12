@@ -2,9 +2,9 @@ const express = require('express');
 const bootcampController = require('../../controllers/bootcampController');
 
 const router = express.Router();
-// Get all
+// Get ALL Bootcamps
 router.get('/', bootcampController.getAllBootcamps);
-// Get ONE bootcamp
+// Get ONE Bootcamp
 router.get('/:id', bootcampController.getOneBootcamp);
 // Create a new Bootcamp
 router.post('/', bootcampController.createOneBootcamp);
