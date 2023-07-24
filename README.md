@@ -24,7 +24,9 @@ npm install
 start script, cd into backend/ and type:
 
 ```
+// DEV
 npm run dev
-```
 
-(npm start (for production))
+// PROD
+npm start
+```
