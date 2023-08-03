@@ -14,6 +14,7 @@
 
 // module.exports = geocoder;
 
+// The official documentation for node-geocoder is here: https://www.npmjs.com/package/node-geocoder
 const NodeGeocoder = require('node-geocoder');
 // const config = require('../config/config');
 const options = {
