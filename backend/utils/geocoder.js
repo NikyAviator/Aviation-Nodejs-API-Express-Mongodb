@@ -1,13 +1,15 @@
-const dotenv = require('../config/config');
-// The official documentation for node-geocoder is here: https://www.npmjs.com/package/node-geocoder
+// Load env vars
+// dotenv.config({ path: '../config/config.env' });
+
+// The official documentation for node - geocoder is here: https://www.npmjs.com/package/node-geocoder
 const NodeGeocoder = require('node-geocoder');
 // const config = require('../config/config');
 const options = {
-  provider: process.env.GEOCODER_PROVIDER,
+  provider: 'mapquest',
 
   // Optional depending on the providers
   //fetch: customFetchImplementation,
-  apiKey: process.env.GEOCODER_API_KEY, // for Mapquest, OpenCage, Google Premier
+  apiKey: 'PPC', // for Mapquest, OpenCage, Google Premier
   formatter: null, // 'gpx', 'string', ...
 };
 
