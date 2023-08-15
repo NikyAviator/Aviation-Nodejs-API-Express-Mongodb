@@ -12,5 +12,10 @@ router.post('/', bootcampController.createOneBootcamp);
 router.put('/:id', bootcampController.updateOneBootcamp);
 // Delete a Bootcamp
 router.delete('/:id', bootcampController.deleteABootcamp);
+// Get Bootcamps within a radius
+router.get(
+  '/radius/:zipcode/:distance',
+  bootcampController.getBootcampsInRadius
+);
 
 module.exports = router;

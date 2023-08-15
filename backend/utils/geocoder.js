@@ -9,7 +9,7 @@ const options = {
 
   // Optional depending on the providers
   //fetch: customFetchImplementation,
-  apiKey: 'PPC', // for Mapquest, OpenCage, Google Premier
+  apiKey: 'ppc', // for Mapquest, OpenCage, Google Premier
   formatter: null, // 'gpx', 'string', ...
 };
 
