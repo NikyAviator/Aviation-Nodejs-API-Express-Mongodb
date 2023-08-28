@@ -9,8 +9,17 @@ const asyncHandler = require('../middleware/async');
 //@route    GET /api/v1/bootcamps
 //@access   Public
 const getAllBootcamps = asyncHandler(async (req, res, next) => {
-  console.log(req.query);
-  const bootcamps = await Bootcamp.find(req.query);
+  let query;
+  let queryStr = JSON.stringify(req.query);
+
+  queryStr = queryStr.replace(
+    /\b(gt|gte|lt|lte|in)\b/g,
+    (match) => `$${match}`
+  );
+
+  query = Bootcamp.find(JSON.parse(queryStr));
+
+  const bootcamps = await query;
 
   res
     .status(200)
