@@ -1,6 +1,6 @@
 const express = require('express');
 const dotenv = require('dotenv');
-const v1BootcampRouter = require('./v1/routes/bootcampRoutes');
+
 const morgan = require('morgan');
 const errorHandler = require('./middleware/error');
 const connectDB = require('./config/db');
@@ -11,6 +11,9 @@ dotenv.config({ path: './config/config.env' });
 // Connect to database
 connectDB();
 
+// Route files
+const v1CoursesRouter = require('./v1/routes/coursesRoutes');
+const v1BootcampRouter = require('./v1/routes/bootcampRoutes');
 const app = express();
 
 // Body parser
@@ -23,6 +26,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Mounting routers and middleware
 app.use('/api/v1/bootcamps', v1BootcampRouter, errorHandler);
+app.use('/api/v1/courses', v1CoursesRouter, errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
