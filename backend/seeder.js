@@ -16,6 +16,7 @@ mongoose.connect(process.env.MONGO_URI, {
 });
 
 // Read JSON files
+// __dirname is the current directory name
 const bootcamps = JSON.parse(
   fs.readFileSync(`${__dirname}/_data/bootcamps.json`, 'utf-8')
 );
@@ -42,6 +43,7 @@ const deleteData = async () => {
   }
 };
 // node seeder -i for import, -d for delete
+// node seeder -i (import) / -d (delete)
 if (process.argv[2] === '-i') {
   importData();
 } else if (process.argv[2] === '-d') {
