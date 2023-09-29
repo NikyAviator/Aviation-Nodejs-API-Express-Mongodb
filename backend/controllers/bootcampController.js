@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const ErrorResponse = require('../utils/errorResponse');
 const Bootcamp = require('../models/Bootcamp');
 const geocoder = require('../utils/geocoder');
@@ -136,16 +137,17 @@ const updateOneBootcamp = asyncHandler(async (req, res, next) => {
 //@access   Private
 const deleteABootcamp = asyncHandler(async (req, res, next) => {
   const bootcamp = await Bootcamp.findById(req.params.id);
+  console.log(bootcamp);
+  console.log(bootcamp instanceof mongoose.Model); // Should print 'true' if it's an instance.
 
-  if (!bootcamp) {
+  if (bootcamp) {
+    await bootcamp.deleteOne();
+    res.status(200).json({ success: true, data: {} });
+  } else {
     return next(
       new ErrorResponse(`Bootcamp not found with id of ${req.params.id}`, 404)
     );
   }
-
-  bootcamp.remove(); // to trigger the remove middleware in the Bootcamp model
-
-  res.status(200).json({ success: true, data: {} });
 });
 
 //@desc     Get bootcamps within a radius
