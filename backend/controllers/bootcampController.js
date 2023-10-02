@@ -137,8 +137,6 @@ const updateOneBootcamp = asyncHandler(async (req, res, next) => {
 //@access   Private
 const deleteABootcamp = asyncHandler(async (req, res, next) => {
   const bootcamp = await Bootcamp.findById(req.params.id);
-  console.log(bootcamp);
-  console.log(bootcamp instanceof mongoose.Model); // Should print 'true' if it's an instance.
 
   if (bootcamp) {
     await bootcamp.deleteOne();
