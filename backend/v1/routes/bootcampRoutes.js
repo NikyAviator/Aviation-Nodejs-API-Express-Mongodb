@@ -24,5 +24,7 @@ router.get(
   '/radius/:zipcode/:distance',
   bootcampController.getBootcampsInRadius
 );
+// Upload a photo for a Bootcamp
+router.put('/:id/photo', bootcampController.bootcampPhotoUpload);
 
 module.exports = router;
