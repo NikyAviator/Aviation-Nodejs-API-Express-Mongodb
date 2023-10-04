@@ -9,8 +9,17 @@ const router = express.Router();
 // Re-route into other resource routers
 router.use('/:bootcampId/courses', courseRouter);
 
+// Import Bootcamp model
+const Bootcamp = require('../../models/Bootcamp');
+// Middleware for advanced results
+const advancedResults = require('../../middleware/advancedResults');
+
 // Get ALL Bootcamps
-router.get('/', bootcampController.getAllBootcamps);
+router.get(
+  '/',
+  advancedResults(Bootcamp, 'courses'),
+  bootcampController.getAllBootcamps
+);
 // Get ONE Bootcamp
 router.get('/:id', bootcampController.getOneBootcamp);
 // Create a new Bootcamp

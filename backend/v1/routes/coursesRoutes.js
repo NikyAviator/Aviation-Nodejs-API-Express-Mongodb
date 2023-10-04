@@ -6,8 +6,20 @@ const router = express.Router({ mergeParams: true });
 // Re-route into other resource routers
 //router.use('/:bootcampId/courses', courseRouter); <- kommer innan våra routes
 
+// Import Course model
+const Course = require('../../models/Course');
+// Middleware for advanced results
+const advancedResults = require('../../middleware/advancedResults');
+
 // Get ALL Courses
-router.get('/', coursesController.getCourses);
+router.get(
+  '/',
+  advancedResults(Course, {
+    path: 'bootcamp',
+    select: 'name description',
+  }),
+  coursesController.getCourses
+);
 
 // Get ONE Course
 router.get('/:id', coursesController.getCourse);
