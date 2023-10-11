@@ -1,6 +1,7 @@
 const express = require('express');
 const coursesController = require('../../controllers/coursesController');
 const router = express.Router({ mergeParams: true });
+const auth = require('../../middleware/auth');
 
 // FRÅN bootcampRoutes.js:
 // Re-route into other resource routers
@@ -25,11 +26,11 @@ router.get(
 router.get('/:id', coursesController.getCourse);
 
 // Add a Course
-router.post('/', coursesController.addCourse);
+router.post('/', auth.protect, coursesController.addCourse);
 
 // Update a Course
-router.put('/:id', coursesController.updateCourse);
+router.put('/:id', auth.protect, coursesController.updateCourse);
 
 // Delete a Course
-router.delete('/:id', coursesController.deleteCourse);
+router.delete('/:id', auth.protect, coursesController.deleteCourse);
 module.exports = router;
