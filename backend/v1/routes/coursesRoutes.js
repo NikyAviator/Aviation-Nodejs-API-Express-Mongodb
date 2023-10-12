@@ -26,11 +26,26 @@ router.get(
 router.get('/:id', coursesController.getCourse);
 
 // Add a Course
-router.post('/', auth.protect, coursesController.addCourse);
+router.post(
+  '/',
+  auth.protect,
+  auth.authorize('publisher', 'admin'),
+  coursesController.addCourse
+);
 
 // Update a Course
-router.put('/:id', auth.protect, coursesController.updateCourse);
+router.put(
+  '/:id',
+  auth.protect,
+  auth.authorize('publisher', 'admin'),
+  coursesController.updateCourse
+);
 
 // Delete a Course
-router.delete('/:id', auth.protect, coursesController.deleteCourse);
+router.delete(
+  '/:id',
+  auth.protect,
+  auth.authorize('publisher', 'admin'),
+  coursesController.deleteCourse
+);
 module.exports = router;

@@ -24,17 +24,37 @@ router.get(
 // Get ONE Bootcamp
 router.get('/:id', bootcampController.getOneBootcamp);
 // Create a new Bootcamp
-router.post('/', auth.protect, bootcampController.createOneBootcamp);
+router.post(
+  '/',
+  auth.protect,
+  auth.authorize('publisher', 'admin'),
+  bootcampController.createOneBootcamp
+);
 // Update a Bootcamp
-router.put('/:id', auth.protect, bootcampController.updateOneBootcamp);
+router.put(
+  '/:id',
+  auth.protect,
+  auth.authorize('publisher', 'admin'),
+  bootcampController.updateOneBootcamp
+);
 // Delete a Bootcamp
-router.delete('/:id', auth.protect, bootcampController.deleteABootcamp);
+router.delete(
+  '/:id',
+  auth.protect,
+  auth.authorize('publisher', 'admin'),
+  bootcampController.deleteABootcamp
+);
 // Get Bootcamps within a radius
 router.get(
   '/radius/:zipcode/:distance',
   bootcampController.getBootcampsInRadius
 );
 // Upload a photo for a Bootcamp
-router.put('/:id/photo', auth.protect, bootcampController.bootcampPhotoUpload);
+router.put(
+  '/:id/photo',
+  auth.protect,
+  auth.authorize('publisher', 'admin'),
+  bootcampController.bootcampPhotoUpload
+);
 
 module.exports = router;
