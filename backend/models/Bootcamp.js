@@ -102,6 +102,12 @@ const BootcampSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
+    // this is a relationship between two models'
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'User',
+      required: true,
+    },
   },
   {
     toJSON: { virtuals: true },
