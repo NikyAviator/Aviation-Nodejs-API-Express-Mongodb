@@ -11,4 +11,7 @@ router.post('/login', authController.login);
 
 // Get current logged in user
 router.get('/me', auth.protect, authController.getMe);
+
+// Forgot password
+router.post('/forgotpassword', authController.forgotPassword);
 module.exports = router;
