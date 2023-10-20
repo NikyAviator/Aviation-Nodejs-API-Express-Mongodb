@@ -81,8 +81,7 @@ const forgotPassword = asyncHandler(async (req, res, next) => {
     'host'
   )}/api/v1/auth/resetpassword/${resetToken}`;
 
-  // Message to be sent
-  const message = `You are receiving this email because you (or someone else) has requested the reset of a password. Please make a PUT request to \n\n ${resetUrl}`;
+  const message = `You are receiving this email because you (or someone else) has requested the reset of a password. Please make a PUT request to: \n\n ${resetUrl}`;
 
   try {
     await sendEmail({
@@ -92,8 +91,8 @@ const forgotPassword = asyncHandler(async (req, res, next) => {
     });
 
     res.status(200).json({ success: true, data: 'Email sent' });
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    console.log(err);
     user.resetPasswordToken = undefined;
     user.resetPasswordExpire = undefined;
 
@@ -101,8 +100,6 @@ const forgotPassword = asyncHandler(async (req, res, next) => {
 
     return next(new ErrorResponse('Email could not be sent', 500));
   }
-
-  res.status(200).json({ success: true, data: user });
 });
 
 // Get token from model, create cookie and send response

@@ -5,19 +5,16 @@ const sendEmail = async (options) => {
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT,
     auth: {
-      user: process.env.SMTP_USER,
+      user: process.env.SMTP_EMAIL,
       pass: process.env.SMTP_PASSWORD,
     },
   });
-  // async..await is not allowed in global scope, must use a wrapper
 
-  // send mail with defined transport object
   const message = {
-    from: `${process.env.FROM_NAME} <${process.env.FROM_EMAIL}>`, // sender address
-    to: options.email, // list of receivers
-    subject: options.subject, // Subject line
-    text: options.message, // plain text body
-    html: '<b>Hello world?</b>', // html body
+    from: `${process.env.FROM_NAME} <${process.env.FROM_EMAIL}>`,
+    to: options.email,
+    subject: options.subject,
+    text: options.message,
   };
 
   const info = await transporter.sendMail(message);
