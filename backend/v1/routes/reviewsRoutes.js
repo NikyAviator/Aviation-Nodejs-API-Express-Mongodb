@@ -18,4 +18,12 @@ router.get(
 // Get single review
 router.get('/:id', reviewsController.getReview);
 
+// Create review
+router.post(
+  '/',
+  auth.protect,
+  auth.authorize('user', 'admin'),
+  reviewsController.createReview
+);
+
 module.exports = router;
