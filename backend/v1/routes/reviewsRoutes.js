@@ -15,4 +15,7 @@ router.get(
   reviewsController.getReviews
 );
 
+// Get single review
+router.get('/:id', reviewsController.getReview);
+
 module.exports = router;
