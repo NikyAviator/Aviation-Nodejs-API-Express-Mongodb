@@ -18,6 +18,7 @@ const v1CoursesRouter = require('./v1/routes/coursesRoutes');
 const v1BootcampRouter = require('./v1/routes/bootcampRoutes');
 const v1AuthRouter = require('./v1/routes/authRoutes');
 const v1UsersRouter = require('./v1/routes/usersRoutes');
+const v1ReviewsRouter = require('./v1/routes/reviewsRoutes');
 const app = express();
 
 // Body parser
@@ -41,6 +42,7 @@ app.use('/api/v1/bootcamps', v1BootcampRouter, errorHandler);
 app.use('/api/v1/courses', v1CoursesRouter, errorHandler);
 app.use('/api/v1/auth', v1AuthRouter, errorHandler);
 app.use('/api/v1/users', v1UsersRouter, errorHandler);
+app.use('/api/v1/reviews', v1ReviewsRouter, errorHandler);
 
 const PORT = process.env.PORT || 5000;
 

@@ -4,11 +4,13 @@ const auth = require('../../middleware/auth');
 
 // Include other resource routers
 const courseRouter = require('./coursesRoutes');
+const reviewRouter = require('./reviewsRoutes');
 
 const router = express.Router();
 
 // Re-route into other resource routers
 router.use('/:bootcampId/courses', courseRouter);
+router.use('/:bootcampId/reviews', reviewRouter);
 
 // Import Bootcamp model
 const Bootcamp = require('../../models/Bootcamp');
