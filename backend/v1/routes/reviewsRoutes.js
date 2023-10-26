@@ -26,4 +26,20 @@ router.post(
   reviewsController.createReview
 );
 
+// Update review
+router.put(
+  '/:id',
+  auth.protect,
+  auth.authorize('user', 'admin'),
+  reviewsController.updateReview
+);
+
+// Delete review
+router.delete(
+  '/:id',
+  auth.protect,
+  auth.authorize('user', 'admin'),
+  reviewsController.deleteReview
+);
+
 module.exports = router;
