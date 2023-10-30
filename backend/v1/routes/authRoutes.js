@@ -23,4 +23,8 @@ router.put('/updatedetails', auth.protect, authController.updateDetails);
 
 // Update password
 router.put('/updatepassword', auth.protect, authController.updatePassword);
+
+// Logout user
+router.get('/logout', authController.logOut);
+
 module.exports = router;
